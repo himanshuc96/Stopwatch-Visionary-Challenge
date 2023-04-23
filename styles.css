@@ -15,11 +15,9 @@
 body {
   background: black;
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110vh;
 }
 
 p {
@@ -57,7 +55,7 @@ button {
 }
 
 .card {
-  height: 90vh;
+  height: 78vh;
   aspect-ratio: 1 / 1.5;
   background: var(--clr-1);
   border-radius: 0.5rem;
@@ -67,6 +65,7 @@ button {
   flex-direction: column;
   position: relative;
   padding: 20px;
+  margin: 40px;
 }
 
 .card::before,
