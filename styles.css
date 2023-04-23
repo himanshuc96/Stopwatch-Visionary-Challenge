@@ -1,0 +1,181 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --clr-1: #052240;
+  --clr-2: #004b6b;
+  --clr-3: #750037;
+  --clr-4: #fa1593;
+  --clr-5: #95deff;
+}
+
+body {
+  background: black;
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+}
+
+p {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  animation: glow 2s infinite alternate linear;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  width: 10rem;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  text-shadow: -2px 4px 4px #091243, 0 0 10px #00d0ff, inset 1px 1px 1px white;
+  color: #1fffff;
+  border: 2px solid;
+  border-radius: 4px;
+  background-color: transparent;
+  box-shadow: 0 1px 2px #004b6b, 2px 1px 4px #750037, 2px 4px 3px #fa1593,
+    0 0 7px 2px #95deff, inset 0 1px 2px #004b6b,
+    inset 2px 1px 4px rgba(0, 0, 0, 0.3), inset 2px 4px 3px #750037,
+    inset 0 0 7px 2px #95deff;
+  animation: flickering 5s infinite;
+}
+#intro {
+  font-size: 20px;
+  text-align: center;
+  animation: glow 2s infinite alternate linear;
+}
+
+.card {
+  height: 90vh;
+  aspect-ratio: 1 / 1.5;
+  background: var(--clr-1);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  border-radius: inherit;
+  animation: rotation 5s linear infinite;
+}
+
+.card::after {
+  filter: blur(3.5rem);
+}
+/* KEYFRAMES */
+
+/* FOR GRADIENT COLOR */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+    background-color: #020024;
+  }
+  50% {
+    background-position: 100% 50%;
+    background-color: #1c1c47;
+  }
+  100% {
+    background-position: 0% 50%;
+    background-color: #165360;
+  }
+}
+
+/* FOR ROTATING */
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* FOR TEXT GLOW */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8),
+      0 0 40px rgba(0, 100, 151, 0.8), 0 0 50px rgba(0, 100, 151, 0.8),
+      0 0 60px rgba(0, 100, 151, 0.5), 0 0 70px rgba(0, 100, 151, 0.5),
+      0 0 90px rgba(0, 100, 151, 0.5), 0 0 100px rgba(0, 100, 151, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8),
+      0 0 8px rgba(255, 255, 255, 0.8), 0 0 10px rgba(55, 255, 255, 0.8),
+      0 0 20px rgba(50, 100, 151, 0.5), 0 0 30px rgba(50, 100, 151, 0.5),
+      0 0 40px rgba(50, 100, 151, 0.5), 0 0 50px rgba(50, 100, 151, 0.5),
+      0 0 100px rgba(50, 100, 151, 0.5);
+  }
+}
+
+/* FOR BUTTON FLICKER */
+
+@keyframes flickering {
+  0% {
+    border-color: transparent;
+    opacity: 0.2;
+  }
+
+  2% {
+    border-color: #1fffff;
+    opacity: 1;
+  }
+
+  4% {
+    border-color: transparent;
+    opacity: 0.2;
+  }
+
+  8% {
+    border-color: #1fffff;
+    opacity: 1;
+  }
+
+  28% {
+    border-color: #1fffff;
+    opacity: 1;
+  }
+
+  30% {
+    border-color: transparent;
+    opacity: 0.2;
+  }
+
+  36% {
+    border-color: #1fffff;
+    opacity: 1;
+  }
+
+  100% {
+    border-color: #1fffff;
+    opacity: 1;
+  }
+}
